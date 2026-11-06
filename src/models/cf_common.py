@@ -22,9 +22,12 @@ class SparseCF(BaseRecommender):
         rows = self.explicit["User-ID"].map(self.user_index).to_numpy(dtype=int)
         cols = self.explicit["Book-ID"].map(self.item_index).to_numpy(dtype=int)
         values = self.explicit["Book-Rating"].to_numpy(dtype=float)
+        # Ma trận thưa: hàng là user, cột là sách, giá trị là rating.
         self.matrix = csr_matrix((values, (rows, cols)), shape=(len(self.users), len(self.items)))
+        # Ma trận 0/1 đánh dấu có rating để tính tổng trọng số cho từng sách.
         self.observed = self.matrix.copy()
         self.observed.data[:] = 1
+        # Chuẩn hóa vector để tính cosine bằng nhân ma trận.
         self.user_norm = normalize(self.matrix) if len(self.users) else self.matrix.copy()
         self.item_norm = normalize(self.matrix.T.tocsr()) if len(self.users) else self.matrix.T.tocsr()
         self._cache = {}
@@ -34,6 +37,7 @@ class SparseCF(BaseRecommender):
         values = np.asarray(similarities).ravel()
         if exclude is not None:
             values[exclude] = 0
+        # Giữ tối đa neighbors láng giềng có độ giống dương.
         idx = np.flatnonzero(values > 0)
         return idx[np.argsort(-values[idx], kind="stable")[:self.neighbors]], values
 

@@ -21,10 +21,12 @@ class LightFMRecommender(BaseRecommender):
         if os.name == "nt" and self.loss != "logistic":
             raise ValueError("Use LightFM logistic on Windows: ranking loss kernels crashed in this build")
         self._setup(books, interactions)
+        # Quy ước dự án: tương tác 0 hoặc rating cao là tín hiệu dương.
         positives = interactions.loc[interactions["Book-Rating"].eq(0)
                                      | interactions["Book-Rating"].ge(self.threshold)]
         if positives.empty:
             raise ValueError("LightFM requires positive train interactions")
+        # Logistic học nhãn dương/âm; loss xếp hạng chỉ nhận tương tác dương.
         training = interactions if self.loss == "logistic" else positives
         self.users = training["User-ID"].unique()
         self.user_index = {u: i for i, u in enumerate(self.users)}
@@ -36,8 +38,10 @@ class LightFMRecommender(BaseRecommender):
         # Không tạo rating giả hoặc dùng test để lấy negative. Ô chưa quan sát vẫn trống.
         labels = np.where(training["Book-Rating"].eq(0)
                           | training["Book-Rating"].ge(self.threshold), 1, -1).astype(np.float32)
+        # Đổi mã user/sách thành chỉ số để tạo ma trận nhãn thưa.
         matrix = coo_matrix((labels, (rows, cols)),
                             shape=(len(self.users), len(self.items)))
+        # Không truyền metadata: học nhân tố theo danh tính user và sách.
         self.model = LightFM(no_components=self.factors, loss=self.loss, random_state=self.seed)
         self.model.fit(matrix, epochs=self.epochs, num_threads=1)
         self.backend_used = f"lightfm_{self.loss}"
@@ -45,10 +49,12 @@ class LightFMRecommender(BaseRecommender):
 
     def score_items(self, user_id=None):
         uid = self.user_index.get(user_id)
+        # User lạ hoặc chưa có tín hiệu dương dùng điểm phổ biến.
         if uid is None or user_id not in self.positive_users:
             return self.popularity.copy()
         scores = self.model.predict(uid, np.arange(len(self.items), dtype=np.int32), num_threads=1)
         # Identity-only LightFM không học được item chưa có positive train.
         scores = np.asarray(scores, dtype=float)
+        # Loại sách chưa có tín hiệu dương; score dùng xếp hạng, không phải rating 1–10.
         scores[[i not in self.positive_items for i in self.items]] = -np.inf
         return scores

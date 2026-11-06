@@ -21,6 +21,7 @@ class SVDRecommender(BaseRecommender):
             raise ValueError("SVD requires explicit train ratings")
         if self.backend not in {"auto", "surprise", "numpy"}:
             raise ValueError("backend must be auto, surprise or numpy")
+        # auto ưu tiên Surprise; thiếu thư viện thì dùng NumPy bên dưới.
         if self.backend != "numpy":
             # Surprise tạo thư mục cache khi import; đặt trong dự án, không dùng home.
             os.environ.setdefault("SURPRISE_DATA_FOLDER", str(PROJECT_ROOT / ".cache" / "surprise"))
@@ -41,6 +42,7 @@ class SVDRecommender(BaseRecommender):
         self.users = self.explicit["User-ID"].unique()
         self.user_index = {u: i for i, u in enumerate(self.users)}
         rng = np.random.default_rng(self.seed)
+        # p/q là nhân tố ẩn user/sách; bu/bi là độ lệch so với trung bình.
         self.p = rng.normal(0, 0.1, (len(self.users), self.factors))
         self.q = rng.normal(0, 0.1, (len(self.items), self.factors))
         self.bu = np.zeros(len(self.users)); self.bi = np.zeros(len(self.items))
@@ -55,8 +57,10 @@ class SVDRecommender(BaseRecommender):
                 batch = order[start:start + 256]
                 u, i = user[batch], item[batch]
                 pu, qi = self.p[u].copy(), self.q[i].copy()
+                # Sai số = rating thật − (trung bình + bias user + bias sách + tích nhân tố).
                 error = rating[batch] - (self.global_mean + self.bu[u] + self.bi[i]
                                          + np.einsum("ij,ij->i", pu, qi))
+                # SGD giảm sai số; regularization hạn chế hệ số lớn; add.at cộng cả chỉ số lặp.
                 np.add.at(self.bu, u, self.lr * (error - self.reg * self.bu[u]))
                 np.add.at(self.bi, i, self.lr * (error - self.reg * self.bi[i]))
                 np.add.at(self.p, u, self.lr * (error[:, None] * qi - self.reg * pu))
@@ -68,6 +72,7 @@ class SVDRecommender(BaseRecommender):
         if self.backend_used == "surprise":
             return float(self.model.predict(user_id, book_id).est)
         u, i = self.user_index.get(user_id), self.item_index.get(book_id)
+        # User/sách lạ chỉ dùng thành phần đã học, bỏ nhân tố chưa huấn luyện.
         value = self.global_mean
         if u is not None:
             value += self.bu[u]
@@ -84,6 +89,7 @@ class SVDRecommender(BaseRecommender):
         scores = np.full(len(self.items), self.global_mean)
         if u is not None:
             scores += self.bu[u]
+        # Chỉ dùng bias và nhân tố sách có rating train; còn lại dùng điểm nền.
         known = np.array([i in self.explicit_items for i in self.items])
         scores[known] += self.bi[known]
         if u is not None:
