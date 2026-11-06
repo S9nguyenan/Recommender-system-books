@@ -1,0 +1,13 @@
+name: book-recommender
+channels:
+  - conda-forge
+dependencies:
+  # LightFM Windows has precompiled packages for Python 3.11 / NumPy 1.x.
+  - python=3.11
+  - numpy>=1.26,<2
+  - pandas>=2.2,<3
+  - scipy>=1.12,<2
+  - scikit-learn>=1.4,<2
+  - scikit-surprise=1.1.4
+  - lightfm=1.17
+  - pip

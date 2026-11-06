@@ -1,0 +1,46 @@
+{
+  "started_utc": "20261106T082436929206Z",
+  "config": {
+    "mode": "quick",
+    "seed": 42,
+    "max_users": 1500,
+    "max_items": 5000,
+    "eval_users": 50,
+    "eval_ratings": 1000,
+    "neighbors": 30,
+    "factors": 32,
+    "epochs": 15,
+    "k": 10,
+    "relevance_threshold": 7,
+    "max_features": 30000,
+    "svd_backend": "auto",
+    "lightfm_loss": "logistic"
+  },
+  "environment": {
+    "python": "3.11.17",
+    "executable": "C:\\Users\\S9\\AppData\\Local\\BookRecommender\\env311\\python.exe",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1",
+    "scikit-surprise": "1.1.4",
+    "lightfm": "1.17"
+  },
+  "source_sha256": {
+    "Books.csv": "8a091121d463ed065e527e04245f3233f573122c46e633997bf4fc626c67f52a",
+    "Ratings.csv": "4903eca4d145b584353094c70d8afa28208bd347a2f6bd6c0d1ce511d45ff35a",
+    "Users.csv": "d82fe997ee9bfc455d0090b67d235694b82a9479d03e036665945ac9d30981bc"
+  },
+  "scope": {
+    "original_interactions": 1031139,
+    "catalog": 5000,
+    "train_rows": 137953,
+    "test_rows": 32338,
+    "test_excluded_by_quick_scope": 166263,
+    "test_unknown_item_rows": 0,
+    "rating_cohort_rows": 1000,
+    "ranking_cohort_users": 50
+  },
+  "source_unchanged": true,
+  "status": "completed"
+}

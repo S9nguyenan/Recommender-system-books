@@ -1,0 +1,4 @@
+# Install separately: failures here do not prevent running the five core models.
+# Windows: prefer python setup_environment.py (environment.yml) for compatible binaries.
+scikit-surprise>=1.1.4,<2
+lightfm>=1.17,<2

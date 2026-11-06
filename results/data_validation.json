@@ -1,0 +1,75 @@
+{
+  "raw_rows": {
+    "books": 271360,
+    "ratings": 1149780,
+    "users": 278858
+  },
+  "raw_missing": {
+    "books": {
+      "Book-ID": 0,
+      "Book-Title": 0,
+      "Book-Author": 1,
+      "Year-Of-Publication": 0,
+      "Publisher": 2,
+      "Image-URL-S": 0,
+      "Image-URL-M": 0,
+      "Image-URL-L": 3
+    },
+    "ratings": {
+      "User-ID": 0,
+      "Book-ID": 0,
+      "Book-Rating": 0
+    },
+    "users": {
+      "User-ID": 0,
+      "Location": 0,
+      "Age": 110762
+    }
+  },
+  "books_exact_duplicates": 1,
+  "ratings_exact_duplicates": 0,
+  "users_exact_duplicates": 0,
+  "missing_book_id_rows": 0,
+  "metadata_review_book_ids": [
+    "078946697X",
+    "2070426769",
+    "0789466953"
+  ],
+  "invalid_or_missing_year": 4634,
+  "invalid_user_rows": 0,
+  "invalid_or_missing_age": 112010,
+  "invalid_rating_rows": 0,
+  "unknown_book_rating_rows": 118641,
+  "unknown_user_rating_rows": 0,
+  "clean_rows": {
+    "books": 271359,
+    "users": 278858,
+    "interactions": 1031139,
+    "explicit": 383843,
+    "implicit": 647296
+  },
+  "config": {
+    "min_year": 1450,
+    "max_year": 2026,
+    "min_age": 5,
+    "max_age": 100,
+    "test_fraction": 0.2,
+    "random_seed": 42
+  },
+  "source_sha256": {
+    "Books.csv": "8a091121d463ed065e527e04245f3233f573122c46e633997bf4fc626c67f52a",
+    "Ratings.csv": "4903eca4d145b584353094c70d8afa28208bd347a2f6bd6c0d1ce511d45ff35a",
+    "Users.csv": "d82fe997ee9bfc455d0090b67d235694b82a9479d03e036665945ac9d30981bc"
+  },
+  "split": {
+    "train": 832538,
+    "test": 198601,
+    "train_explicit": 310933,
+    "test_explicit": 72910,
+    "test_implicit": 125691,
+    "test_items_not_in_train": 32675,
+    "train_users": 92106,
+    "test_users": 40836
+  },
+  "checks_passed": true
+}
