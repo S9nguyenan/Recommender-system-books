@@ -1,7 +1,7 @@
 {
-  "run_dir": "C:\\Users\\S9\\Documents\\1 tai lieu\\Thực Tập Cơ Sở\\Khuyến nghị sách\\results\\quick_20261106T082436929206Z",
+  "run_dir": "C:\\Users\\S9\\Documents\\1 tai lieu\\Thực Tập Cơ Sở\\Khuyến nghị sách ver2\\results\\quick_20261107T004419333742Z",
   "manifest": {
-    "started_utc": "20261106T082436929206Z",
+    "started_utc": "20261107T004419333742Z",
     "config": {
       "mode": "quick",
       "seed": 42,
@@ -55,7 +55,7 @@
       "seed": 42,
       "k": 10,
       "relevance_threshold": 7,
-      "fit_seconds": 0.14705710008274764,
+      "fit_seconds": 0.13985080004204065,
       "backend": "popularity",
       "test_rows": 32338,
       "test_explicit_total": 8388,
@@ -73,7 +73,7 @@
       "precision_at_k": 0.004,
       "recall_at_k": 0.01,
       "recommendation_fill_rate": 1.0,
-      "elapsed_seconds": 0.25146649999078363
+      "elapsed_seconds": 0.23889190005138516
     },
     {
       "model": "content_based",
@@ -83,7 +83,7 @@
       "seed": 42,
       "k": 10,
       "relevance_threshold": 7,
-      "fit_seconds": 1.7556092999875546,
+      "fit_seconds": 1.5857085000025108,
       "backend": "content_based",
       "test_rows": 32338,
       "test_explicit_total": 8388,
@@ -101,7 +101,7 @@
       "precision_at_k": 0.036000000000000004,
       "recall_at_k": 0.12074603174603174,
       "recommendation_fill_rate": 1.0,
-      "elapsed_seconds": 1.9011158000212163
+      "elapsed_seconds": 1.7093521000351757
     },
     {
       "model": "user_cf",
@@ -111,7 +111,7 @@
       "seed": 42,
       "k": 10,
       "relevance_threshold": 7,
-      "fit_seconds": 0.17087410006206483,
+      "fit_seconds": 0.15267649991437793,
       "backend": "user_cf",
       "test_rows": 32338,
       "test_explicit_total": 8388,
@@ -132,7 +132,7 @@
       "precision_at_k": 0.006000000000000001,
       "recall_at_k": 0.006818181818181819,
       "recommendation_fill_rate": 1.0,
-      "elapsed_seconds": 1.6575081000337377
+      "elapsed_seconds": 1.3233448999235407
     },
     {
       "model": "item_cf",
@@ -142,7 +142,7 @@
       "seed": 42,
       "k": 10,
       "relevance_threshold": 7,
-      "fit_seconds": 0.18263819999992847,
+      "fit_seconds": 0.1523438999429345,
       "backend": "item_cf",
       "test_rows": 32338,
       "test_explicit_total": 8388,
@@ -163,7 +163,7 @@
       "precision_at_k": 0.0,
       "recall_at_k": 0.0,
       "recommendation_fill_rate": 1.0,
-      "elapsed_seconds": 6.63536600000225
+      "elapsed_seconds": 5.901507299975492
     },
     {
       "model": "svd",
@@ -173,7 +173,7 @@
       "seed": 42,
       "k": 10,
       "relevance_threshold": 7,
-      "fit_seconds": 0.3557095000287518,
+      "fit_seconds": 0.3071673000231385,
       "backend": "surprise",
       "test_rows": 32338,
       "test_explicit_total": 8388,
@@ -194,7 +194,7 @@
       "precision_at_k": 0.004,
       "recall_at_k": 0.005833333333333333,
       "recommendation_fill_rate": 1.0,
-      "elapsed_seconds": 1.479426300036721
+      "elapsed_seconds": 1.323543900041841
     },
     {
       "model": "lightfm",
@@ -204,7 +204,7 @@
       "seed": 42,
       "k": 10,
       "relevance_threshold": 7,
-      "fit_seconds": 6.909441999974661,
+      "fit_seconds": 6.288985799998045,
       "backend": "lightfm_logistic",
       "test_rows": 32338,
       "test_explicit_total": 8388,
@@ -222,7 +222,7 @@
       "precision_at_k": 0.006000000000000001,
       "recall_at_k": 0.012,
       "recommendation_fill_rate": 1.0,
-      "elapsed_seconds": 7.086682000081055
+      "elapsed_seconds": 6.434601400047541
     }
   ]
 }

@@ -1,0 +1,2 @@
+﻿model,mode,status,error,seed,k,relevance_threshold,fit_seconds,backend,test_rows,test_explicit_total,test_unknown_item_rows,rating_cohort,rating_evaluated,rating_coverage,mae,rmse,ranking_users_evaluated,users_without_relevant_test,rating_note,rating_cold_users,rating_cold_items,precision_at_k,recall_at_k,recommendation_fill_rate,elapsed_seconds
+popularity,quick,success,,42,10,7,0.13985080004204065,popularity,32338,8388,0,1000,0,,,,50,231,Ranking scores are not explicit rating predictions,0,5,0.004,0.01,1.0,0.23889190005138516
