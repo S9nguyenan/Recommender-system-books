@@ -1,4 +1,4 @@
-"""Item cosine similarities restricted to each user's rated history."""
+"""Lọc cộng tác dựa trên sách (Item-Based CF): gợi ý từ các sách có mẫu đánh giá tương tự."""
 
 import numpy as np
 from src.models.cf_common import SparseCF

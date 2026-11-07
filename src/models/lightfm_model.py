@@ -1,4 +1,4 @@
-"""LightFM logistic: positive/negative labels derived only from observed train."""
+"""LightFM: học sở thích từ tương tác người dùng–sách để xếp hạng sách gợi ý."""
 
 import os
 import numpy as np

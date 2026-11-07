@@ -1,4 +1,4 @@
-"""Biased matrix factorization on observed ratings (Surprise SVD preferred)."""
+"""SVD: học nhân tố ẩn của người dùng và sách để dự đoán điểm đánh giá."""
 
 import numpy as np
 import os

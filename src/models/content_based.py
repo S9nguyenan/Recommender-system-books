@@ -1,4 +1,4 @@
-"""TF-IDF metadata and cosine similarity, computed on demand."""
+"""Gợi ý dựa trên nội dung: dùng TF-IDF để tìm sách có mô tả giống sách người dùng thích."""
 
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer

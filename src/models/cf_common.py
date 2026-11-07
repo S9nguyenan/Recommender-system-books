@@ -1,4 +1,4 @@
-"""Sparse explicit-rating matrix shared by neighborhood methods."""
+"""Lớp dùng chung cho lọc cộng tác (CF): tạo ma trận đánh giá thưa và chọn láng giềng."""
 
 import numpy as np
 from scipy.sparse import csr_matrix

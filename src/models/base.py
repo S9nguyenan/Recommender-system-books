@@ -1,4 +1,4 @@
-"""Shared catalog, exclusion and explicit-rating baseline."""
+"""Lớp cơ sở cho mô hình gợi ý: quản lý sách, điểm dự phòng và lọc sách đã xem."""
 
 import numpy as np
 import pandas as pd

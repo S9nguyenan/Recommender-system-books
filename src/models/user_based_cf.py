@@ -1,4 +1,4 @@
-"""User cosine k-nearest neighbors using only explicit train ratings."""
+"""Lọc cộng tác dựa trên người dùng (User-Based CF): gợi ý từ đánh giá của người có sở thích tương tự."""
 
 import numpy as np
 from src.models.cf_common import SparseCF

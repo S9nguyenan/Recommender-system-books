@@ -1,4 +1,4 @@
-"""Popularity based on explicit rating count and shrunk mean."""
+"""Gợi ý theo độ phổ biến: xếp hạng sách bằng điểm trung bình có điều chỉnh theo số đánh giá."""
 
 from src.models.base import BaseRecommender
 
